@@ -1,0 +1,18 @@
+import pandas as pd
+from collections import Counter
+x=pd.read_csv('french_dictionary.csv',encoding='latin-1')
+a=x["English"].values
+b=x["French"].values
+c=dict(zip(a,b))
+lis=[]
+d=dict()
+import os
+with open('t8.shakespeare.txt','r') as f:
+        text = f.readlines()
+for i in text:
+  for j in c:
+    if j in i:
+      print(j,c[j])
+      lis.append(c[j])
+count=Counter(lis)
+print(count)

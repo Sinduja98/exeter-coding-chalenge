@@ -1,0 +1,16 @@
+import pandas as pd
+from collections import Counter
+x=pd.read_csv('french_dictionary.csv',encoding='latin-1')
+a=x["English"].values
+b=x["French"].values
+c=dict(zip(a,b))
+import os
+textli= open('t8.shakespeare.txt', 'r+' )
+for i in textli:
+  for j in c:
+    if j in i:
+      textli.write(i.replace(j,c[j]))
+textli.close()
+textmi= open('t8.shakespeare.txt', 'r' )
+for i in textmi:
+  print(i+"\t")
